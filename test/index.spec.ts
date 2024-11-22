@@ -37,6 +37,16 @@ class TestClass {
         }
         return true;
     }
+
+    @Retryable({
+        maxAttempts: 2,
+        recoverFunc: () => {
+            console.log('call recover function');
+        }
+    })
+    async callRecover() {
+        throw Error();
+    }
 }
 
 describe('test', () => {
@@ -55,5 +65,10 @@ describe('test', () => {
     it ('retry failure test', async () => {
         const testClass = new TestClass();
         await expect(testClass.doWrong()).rejects.toThrow();
+    });
+
+    it ('call recover function', async () => {
+        const testClass = new TestClass();
+        await expect(testClass.callRecover()).resolves.toBeUndefined();
     });
 })

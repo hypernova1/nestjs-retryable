@@ -2,7 +2,7 @@ export default function Retryable(param: {
     maxAttempts: number;
     value?: (new (...args: any[]) => Error)[];
     backoff?: number;
-    recover?: string;
+    recoverFunc?: Function;
 }) {
     return function (target: any, propertyKey: string, descriptor: PropertyDescriptor) {
         const originalMethod = descriptor.value;
@@ -30,9 +30,9 @@ export default function Retryable(param: {
                     }
                 }
             }
-            // if (param.recover) {
-            //     return;
-            // }
+            if (param.recoverFunc) {
+                return param.recoverFunc();
+            }
 
             if (error) {
                 throw error;
