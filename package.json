@@ -1,5 +1,5 @@
 {
-  "name": "@hypernova1/retryable",
+  "name": "@hypemova/retryable",
   "version": "0.0.1",
   "description": "",
   "repository": "git@github.com:hypernova1/retryable.git",
@@ -13,6 +13,9 @@
       "require": "./dist/cjs/index.js",
       "types": "./dist/index.d.ts"
     }
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "scripts": {
     "build": "rm -fr dist/* && tsc -p tsconfig.json && tsc -p tsconfig-cjs.json && ./fixup.sh",
