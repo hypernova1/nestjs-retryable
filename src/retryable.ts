@@ -1,4 +1,4 @@
-export default function Retryable(param: {
+export function Retryable(param: {
     maxAttempts: number;
     value?: (new (...args: any[]) => Error)[];
     backoff?: number;

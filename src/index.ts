@@ -1,2 +1,2 @@
-export * from './retryable';
-export * from './recover';
+export { Retryable } from './retryable';
+export { Recover } from './recover';

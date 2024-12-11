@@ -4,6 +4,6 @@
     "module": "esnext",
     "outDir": "dist/mjs",
     "target": "esnext",
-    "experimentalDecorators": true
+    "experimentalDecorators": true,
   }
 }
